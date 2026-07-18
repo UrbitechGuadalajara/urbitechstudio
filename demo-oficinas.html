@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Modelo conceptual de un sitio para renta de oficinas, coworking y salas de juntas, creado por Urbitech Guadalajara.">
+  <meta name="theme-color" content="#ff5a36">
+  <title>NODO Workspaces | Modelo conceptual de Urbitech Guadalajara</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="oficinas.css">
+  <script src="oficinas.js" defer></script>
+</head>
+
+<body>
+  <header class="nodo-header">
+    <a class="nodo-logo" href="#inicio" aria-label="NODO Workspaces, inicio">
+      <span>NODO</span>
+      <small>workspaces</small>
+    </a>
+
+    <nav class="nodo-nav" aria-label="Navegación principal">
+      <a href="#espacios">Espacios</a>
+      <a href="#incluye">Qué incluye</a>
+    </nav>
+
+    <a class="nodo-back" href="index.html">
+      <span aria-hidden="true">←</span>
+      Volver a Urbitech
+    </a>
+  </header>
+
+  <main>
+    <section class="nodo-hero" id="inicio">
+      <div class="hero-copy">
+        <p class="concept-badge">Modelo conceptual · Urbitech Guadalajara</p>
+
+        <h1>
+          Tu oficina,
+          <em>sin complicaciones.</em>
+        </h1>
+
+        <p class="hero-intro">
+          Espacios listos para trabajar, reunirte y recibir clientes en las zonas más conectadas de Guadalajara.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-action" href="#espacios">Explorar espacios</a>
+          <a class="text-action" href="#disponibilidad">Ver disponibilidad <span>↗</span></a>
+        </div>
+
+        <div class="hero-proof">
+          <div><strong>3</strong><span>sedes estratégicas</span></div>
+          <div><strong>24/7</strong><span>acceso disponible</span></div>
+          <div><strong>1 día</strong><span>para comenzar</span></div>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <img
+          src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=94"
+          alt="Espacio de coworking amplio y contemporáneo"
+        >
+
+        <div class="hero-card">
+          <span>Disponible hoy</span>
+          <strong>Oficina privada para 4</strong>
+          <p>Providencia · desde $8,900/mes</p>
+          <a href="#disponibilidad">Consultar espacio</a>
+        </div>
+
+        <div class="vertical-stamp" aria-hidden="true">GDL · WORK · CONNECT</div>
+      </div>
+    </section>
+
+    <section class="availability-strip" id="disponibilidad">
+      <div class="availability-title">
+        <span>Encuentra tu espacio</span>
+        <strong>¿Qué necesitas hoy?</strong>
+      </div>
+
+      <div class="availability-options" role="tablist" aria-label="Tipo de espacio">
+        <button class="space-filter is-active" type="button" data-space="privada" role="tab" aria-selected="true">
+          Oficina privada
+        </button>
+        <button class="space-filter" type="button" data-space="coworking" role="tab" aria-selected="false">
+          Coworking
+        </button>
+        <button class="space-filter" type="button" data-space="juntas" role="tab" aria-selected="false">
+          Sala de juntas
+        </button>
+      </div>
+
+      <div class="availability-result" aria-live="polite">
+        <span id="availability-name">Oficina privada</span>
+        <strong id="availability-price">Desde $8,900 / mes</strong>
+        <p id="availability-detail">Mobiliario, internet, recepción y domicilio comercial incluidos.</p>
+      </div>
+
+      <a class="availability-button" href="index.html#contacto">Solicitar información ↗</a>
+    </section>
+
+    <section class="spaces-section" id="espacios">
+      <div class="spaces-heading">
+        <p class="eyebrow">Espacios para cada etapa</p>
+        <h2>Elige cómo quieres trabajar.</h2>
+        <p>
+          Desde una estación por día hasta una oficina completa para tu equipo. Todo listo, sin contratos complicados ni inversión inicial.
+        </p>
+      </div>
+
+      <div class="spaces-rail">
+        <article class="space-product space-product-orange">
+          <div class="product-number">01</div>
+          <div class="product-copy">
+            <p>Privacidad y presencia</p>
+            <h3>Oficinas privadas</h3>
+            <span>Para equipos de 1 a 12 personas</span>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=92"
+            alt="Oficina privada equipada"
+          >
+          <a href="#disponibilidad" aria-label="Consultar oficinas privadas">↗</a>
+        </article>
+
+        <article class="space-product space-product-dark">
+          <div class="product-number">02</div>
+          <div class="product-copy">
+            <p>Flexibilidad diaria</p>
+            <h3>Coworking</h3>
+            <span>Escritorios flexibles y áreas compartidas</span>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=92"
+            alt="Zona de coworking con iluminación natural"
+          >
+          <a href="#disponibilidad" aria-label="Consultar coworking">↗</a>
+        </article>
+
+        <article class="space-product space-product-blue">
+          <div class="product-number">03</div>
+          <div class="product-copy">
+            <p>Reuniones que avanzan</p>
+            <h3>Salas de juntas</h3>
+            <span>Por hora, media jornada o día completo</span>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=1200&q=92"
+            alt="Sala de juntas de estilo contemporáneo"
+          >
+          <a href="#disponibilidad" aria-label="Consultar salas de juntas">↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="benefits-section" id="incluye">
+      <div class="benefits-image">
+        <img
+          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=94"
+          alt="Zona común de oficinas con diseño cálido"
+        >
+        <div class="image-caption">
+          <span>Un espacio que trabaja contigo</span>
+          <strong>NODO Providencia</strong>
+        </div>
+      </div>
+
+      <div class="benefits-content">
+        <p class="eyebrow">Todo funciona desde el primer día</p>
+        <h2>Tu equipo trabaja. Nosotros resolvemos el espacio.</h2>
+
+        <div class="benefits-list">
+          <article>
+            <span>01</span>
+            <div>
+              <h3>Internet empresarial</h3>
+              <p>Conectividad estable y redes preparadas para trabajo diario y videollamadas.</p>
+            </div>
+          </article>
+
+          <article>
+            <span>02</span>
+            <div>
+              <h3>Recepción y correspondencia</h3>
+              <p>Atención profesional para visitas, llamadas, paquetería y documentación.</p>
+            </div>
+          </article>
+
+          <article>
+            <span>03</span>
+            <div>
+              <h3>Café, limpieza y mantenimiento</h3>
+              <p>Servicios incluidos para que tu equipo se concentre únicamente en operar.</p>
+            </div>
+          </article>
+
+          <article>
+            <span>04</span>
+            <div>
+              <h3>Planes que pueden crecer</h3>
+              <p>Cambia de modalidad o amplía tu espacio conforme evoluciona tu negocio.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="concept-footer">
+      <div class="concept-footer-copy">
+        <span>Proyecto conceptual</span>
+        <h2>Una identidad distinta para demostrar que cada negocio merece su propio lenguaje.</h2>
+      </div>
+
+      <div class="concept-footer-actions">
+        <p>
+          Este sitio es una demostración creada por Urbitech Guadalajara. Un proyecto real se adaptaría a la marca, servicios, fotografías y objetivos de cada cliente.
+        </p>
+        <a class="footer-primary" href="index.html#contacto">Crear una página para mi negocio</a>
+        <a class="footer-back" href="index.html">← Regresar a Urbitech Guadalajara</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
