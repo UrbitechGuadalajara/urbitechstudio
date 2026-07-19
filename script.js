@@ -15,6 +15,23 @@
   const whatsappUrl =
     "https://wa.me/523313628727?text=Hola%2C%20Urbitech.%20Visité%20su%20sitio%20web%20y%20me%20gustaría%20recibir%20información%20para%20crear%20o%20mejorar%20la%20página%20de%20mi%20negocio.";
 
+  function trackEvent(eventName, parameters = {}) {
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("event", eventName, {
+      ...parameters,
+      page_path: window.location.pathname,
+      page_title: document.title
+    });
+  }
+
+  function getWhatsappLocation(link) {
+    if (link.classList.contains("whatsapp-float")) return "floating_button";
+    if (link.closest(".contact-alternative")) return "contact_modal";
+    if (link.closest(".final-cta-actions")) return "final_cta";
+    return "other";
+  }
+
 
   function setHeaderState() {
     header.classList.toggle("is-scrolled", window.scrollY > 18);
@@ -61,6 +78,9 @@
 
   document.querySelectorAll(".js-open-contact").forEach((button) => {
     button.addEventListener("click", () => {
+      trackEvent("contact_form_open", {
+        button_text: button.textContent.trim()
+      });
       openModal(contactModal);
     });
   });
@@ -70,6 +90,29 @@
   });
 
 
+
+  document.querySelectorAll('a[href*="wa.me/"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      trackEvent("whatsapp_click", {
+        link_location: getWhatsappLocation(link),
+        link_text: link.textContent.trim()
+      });
+    });
+  });
+
+  document
+    .querySelectorAll(".concept-card-link, .hero-concept-link")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        trackEvent("demo_click", {
+          demo_url: link.getAttribute("href"),
+          demo_name:
+            link.querySelector("h2, h3")?.textContent.trim() ||
+            link.getAttribute("aria-label") ||
+            "unknown"
+        });
+      });
+    });
 
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
@@ -183,6 +226,12 @@
       if (!response.ok) {
         throw new Error("No fue posible enviar el formulario.");
       }
+
+      trackEvent("generate_lead", {
+        form_name: "contact_form",
+        service_selected:
+          contactForm.querySelector("#service")?.value || "not_selected"
+      });
 
       contactForm.reset();
       formStatus.textContent =
