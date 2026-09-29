@@ -85,6 +85,15 @@
     });
   });
 
+
+  const query = new URLSearchParams(window.location.search);
+  if (query.get("contact") === "1") {
+    const source = query.get("source") || "Recurso SEO";
+    const leadSource = document.getElementById("lead-source");
+    if (leadSource) leadSource.value = source;
+    window.setTimeout(() => openModal(contactModal), 120);
+  }
+
   document.querySelectorAll("[data-close-modal]").forEach((element) => {
     element.addEventListener("click", () => closeModal(contactModal));
   });
@@ -207,6 +216,14 @@
 
     if (!contactForm.reportValidity()) return;
 
+    const goals = contactForm.querySelectorAll('input[name="project_goals"]:checked');
+    if (!goals.length) {
+      formStatus.textContent = "Selecciona al menos una opción sobre lo que te gustaría lograr.";
+      formStatus.className = "form-status is-error";
+      contactForm.querySelector('input[name="project_goals"]')?.focus();
+      return;
+    }
+
     contactForm.classList.add("is-loading");
     formStatus.textContent = "";
     formStatus.className = "form-status";
@@ -229,8 +246,7 @@
 
       trackEvent("generate_lead", {
         form_name: "contact_form",
-        service_selected:
-          contactForm.querySelector("#service")?.value || "not_selected"
+        project_stage: contactForm.querySelector("#project_stage")?.value || "not_selected"
       });
 
       contactForm.reset();

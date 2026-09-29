@@ -1718,3 +1718,39 @@ button {
   }
   .concept-filter { flex: 0 0 auto; }
 }
+
+
+/* Configurador de proyecto */
+.project-options { border: 0; padding: 0; margin: 0; }
+.project-options legend { font-weight: 650; margin-bottom: 6px; }
+.field-help { margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+.option-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.option-grid label { display:flex; align-items:flex-start; gap:9px; padding:12px 13px; border:1px solid rgba(24,33,39,.16); border-radius:10px; cursor:pointer; background:#fff; line-height:1.35; }
+.option-grid label:has(input:checked) { border-color:#182127; background:#f3f5f5; }
+.option-grid input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  padding: 0;
+  margin: 1px 0 0;
+  flex: 0 0 18px;
+  accent-color: #182127;
+}
+.option-grid label {
+  align-items: center;
+  text-align: left;
+}
+.option-grid label span {
+  display: block;
+  min-width: 0;
+}
+.option-grid.compact label {
+  min-height: 58px;
+  padding: 10px 12px;
+}
+.option-grid.compact input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  flex-basis: 16px;
+}
+@media(max-width:620px){.option-grid{grid-template-columns:1fr}}
